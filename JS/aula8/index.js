@@ -12,6 +12,6 @@ anoNascimento = 2022 - 18
 
 console.log(imc, anoNascimento)
 
-const resposta = `${nome}${sobrenome} tem ${idade} anos e nasceu em ${anoNascimento} tem ${alturaEmM}m de altura, pesa ${peso}kg e seu imc é de ${imc}`
+const resposta = `${nome}${sobrenome} tem ${idade} anos e nasceu em ${anoNascimento} tem ${alturaEmM}m de altura, pesa ${peso}kg e seu imc é de ${imc.toFixed(2)}`
 
 console.log(resposta)
