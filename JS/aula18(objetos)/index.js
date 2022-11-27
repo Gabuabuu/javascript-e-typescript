@@ -17,3 +17,4 @@ const pessoa1 = {
 };
 
 pessoa1.fala()
+ 
