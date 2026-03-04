@@ -19,11 +19,43 @@ form.addEventListener('submit', (e) => {
     return;
   }
   const imc = getImc(peso, altura);
-  console.log('teste')
+  const imcList = getImcList(imc)
+
+  const msg = `Seu IMC ${imc} (${imcList})`
+
+  showResult(msg, true);
 })
 
-function getImc () {
+/*
+
+Menos do que 18,5 Abaixo do peso
+Entre 18,5 e 24,9 Peso normal
+Entre 25 e 29,9 Sobrepeso
+Entre 30 e 34,9 Obesidade grau 1
+Entre 35 e 39,9 Obesidade grau 2
+Mais do que 40
+
+Obesidade grau 3
+
+
+ */
+
+
+function getImcList(imc) {
+  const imcList = ['Abaixo do peso', 'Peso normal', 'Sobrepeso',
+    'Obesidade grau 1', 'Obesidade grau 2', 'Obesidade grau 3']
+  if (imc >= 39.9) return imcList[5]
+  if (imc >= 34.9) return imcList[4]
+  if (imc >= 29.9) return imcList[3]
+  if (imc >= 24.9) return imcList[2]
+  if (imc >= 18.5) return imcList[1]
+  if (imc < 18.5) return imcList[0]
+
+}
+
+function getImc(peso, altura) {
   const imc = peso / altura ** 2
+  return imc.toFixed(2)
 }
 
 
@@ -36,7 +68,15 @@ const showResult = (msg, isValid) => {
   const resultado = document.getElementById("resultado");
   resultado.innerHTML = ``;
 
+  
   const paragrafo = criaParagrafo()
+
+  if (isValid) {
+    paragrafo.classList.add('paragrafo-resultado')
+  } else {
+    paragrafo.classList.add('bad')
+  }
+
   paragrafo.innerHTML = msg
   resultado.appendChild(paragrafo)
 }
