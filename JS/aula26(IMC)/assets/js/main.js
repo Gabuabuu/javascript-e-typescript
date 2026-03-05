@@ -41,16 +41,15 @@ Obesidade grau 3
  */
 
 
+
 function getImcList(imc) {
+  const color = paragrafo
   const imcList = ['Abaixo do peso', 'Peso normal', 'Sobrepeso',
     'Obesidade grau 1', 'Obesidade grau 2', 'Obesidade grau 3']
-  if (imc >= 39.9) return imcList[5]
-  if (imc >= 34.9) return imcList[4]
-  if (imc >= 29.9) return imcList[3]
-  if (imc >= 24.9) return imcList[2]
-  if (imc >= 18.5) return imcList[1]
-  if (imc < 18.5) return imcList[0]
-
+  if (imc >= 39.9) {
+    color.style.backgroundColor = 'purple'
+    return imcList[5]
+  } 
 }
 
 function getImc(peso, altura) {
@@ -63,13 +62,13 @@ function criaParagrafo() {
   const p = document.createElement('p');
   return p;
 }
+const paragrafo = criaParagrafo()
 
 const showResult = (msg, isValid) => {
   const resultado = document.getElementById("resultado");
-  resultado.innerHTML = ``;
+  resultado.innerHTML = `test`;
 
-  
-  const paragrafo = criaParagrafo()
+
 
   if (isValid) {
     paragrafo.classList.add('paragrafo-resultado')
